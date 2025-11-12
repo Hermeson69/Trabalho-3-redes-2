@@ -29,12 +29,14 @@ python3 main.py
 4. ✅ **Aguarda** os servidores ficarem prontos
 5. ✅ **Executa** os testes de carga (630 requisições)
 6. ✅ **Gera** análises comparativas
-7. ✅ **Mostra** os resultados
-8. ✅ **Mantém** os containers rodando
-9. ✅ **Ao sair (Ctrl+C)**: Derruba TUDO automaticamente
-   - Para containers
-   - Remove volumes
-   - Remove redes Docker
+7. ✅ **Gera** gráficos comparativos (matplotlib + numpy)
+8. ✅ **Mostra** os resultados
+9. ✅ **Mantém** os containers rodando
+10. ✅ **Ao sair (Ctrl+C)**: Derruba TUDO automaticamente
+
+- Para containers
+- Remove volumes
+- Remove redes Docker
 
 ---
 
@@ -65,21 +67,51 @@ Subrede: 53.82.0.0/24
 [4/7] Status dos containers:
 ✓ Listando containers concluído
 
-[5/7] Executando testes de carga...
+[5/8] Executando testes de carga...
 Isso pode levar alguns minutos. Aguarde...
 
 === TESTE DE CARGA DE SERVIDORES WEB ===
 [...saída dos testes...]
 ✓ Testes concluídos com sucesso!
 
-[6/7] Resumo dos resultados:
+[6/8] Resumo dos resultados:
 ✓ Resultados salvos em: resultados/resultados_testes.txt
 
   📊 Total de testes executados: 6
   ✓ Taxa de sucesso: 100%
 
-[7/7] Gerando análise comparativa...
+[7/8] Gerando análise comparativa...
 ✓ Análise gerada com sucesso!
+
+[8/8] Gerando gráficos comparativos...
+Isso pode levar alguns segundos...
+
+================================================================================
+GERANDO GRÁFICOS COMPARATIVOS
+================================================================================
+
+✓ 6 testes carregados
+
+Gerando 5 gráficos...
+
+✓ Gráfico salvo: resultados/graficos/latencia_media.png
+✓ Gráfico salvo: resultados/graficos/desvio_padrao.png
+✓ Gráfico salvo: resultados/graficos/latencia_min_max.png
+✓ Gráfico salvo: resultados/graficos/placar_vencedores.png
+✓ Gráfico salvo: resultados/graficos/comparativo_geral.png
+
+================================================================================
+✓ Todos os gráficos salvos em: resultados/graficos
+================================================================================
+
+📊 5 gráficos salvos em: resultados/graficos/
+  • comparativo_geral.png
+  • desvio_padrao.png
+  • latencia_media.png
+  • latencia_min_max.png
+  • placar_vencedores.png
+
+✓ Gráficos gerados com sucesso!
 
 ================================================================================
 SERVIÇOS DISPONÍVEIS:
@@ -112,12 +144,24 @@ O script automaticamente:
 
 ## 📁 Resultados Gerados:
 
-Após a execução, você terá os seguintes arquivos em `resultados/`:
+Após a execução, você terá os seguintes arquivos:
+
+### 📊 Arquivos TXT em `resultados/`:
 
 - **resultados_testes.txt** - Dados brutos de todos os testes
 - **resumo_executivo.txt** - Análise executiva completa
 - **comparacao_servidores.txt** - Comparação detalhada Nginx vs Apache
 - **analise_comparativa.txt** - Análise automática gerada
+
+### 📈 Gráficos PNG em `resultados/graficos/`:
+
+- **latencia_media.png** - Comparação de latência média por cenário
+- **desvio_padrao.png** - Análise de consistência (desvio padrão)
+- **latencia_min_max.png** - Latências extremas (min/max)
+- **placar_vencedores.png** - Placar de vitórias (pizza + barras)
+- **comparativo_geral.png** - Média geral de todas as métricas
+
+**Total: 5 gráficos em alta resolução (300 DPI)**
 
 ---
 
@@ -134,7 +178,18 @@ import os          # Para operações de sistema
 from pathlib import Path  # Para caminhos de arquivos
 ```
 
-**Nenhuma dependência externa!** 🎉
+**Nenhuma dependência externa no main.py!** 🎉
+
+### 📊 Para os gráficos:
+
+Os gráficos são gerados usando bibliotecas científicas Python:
+
+```python
+import matplotlib  # Geração de gráficos
+import numpy       # Operações numéricas
+```
+
+**Instaladas automaticamente no container Docker!**
 
 ---
 
@@ -185,6 +240,14 @@ cat resultados/comparacao_servidores.txt
 
 # Ver resumo executivo
 cat resultados/resumo_executivo.txt
+
+# Ver gráficos gerados
+ls -lh resultados/graficos/
+
+# Abrir gráficos (exemplos)
+xdg-open resultados/graficos/latencia_media.png
+eog resultados/graficos/*.png
+firefox resultados/graficos/placar_vencedores.png
 ```
 
 ---
@@ -227,9 +290,10 @@ sudo lsof -i :8080
 ✅ **Cores no terminal** para melhor visualização  
 ✅ **Tratamento de erros** robusto  
 ✅ **Feedback contínuo** do progresso  
-✅ **Captura Ctrl+C** graciosamente
-
----
+✅ **Captura Ctrl+C** graciosamente  
+✅ **Gráficos profissionais** em alta resolução (300 DPI)  
+✅ **5 tipos diferentes** de visualizações comparativas  
+✅ **Matplotlib + NumPy** para análise científica ---
 
 ## 🎓 Para Apresentação/Demonstração:
 

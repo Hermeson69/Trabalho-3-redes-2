@@ -2,8 +2,19 @@ FROM python:3.11-alpine
 
 WORKDIR /app
 
-# Instalar dependências do sistema
-RUN apk add --no-cache curl
+# Instalar dependências do sistema necessárias para matplotlib
+RUN apk add --no-cache \
+    curl \
+    gcc \
+    musl-dev \
+    linux-headers \
+    g++ \
+    freetype-dev \
+    libpng-dev \
+    openblas-dev
+
+# Instalar matplotlib e numpy
+RUN pip install --no-cache-dir matplotlib numpy
 
 # Copiar scripts
 COPY . /app/

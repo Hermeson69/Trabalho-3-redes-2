@@ -69,7 +69,7 @@ class ProjetoRedesManager:
     
     def check_docker(self):
         """Verifica se Docker está disponível"""
-        print(f"{Colors.OKBLUE}[1/7] Verificando Docker...{Colors.ENDC}")
+        print(f"{Colors.OKBLUE}[1/8] Verificando Docker...{Colors.ENDC}")
         try:
             result = self.run_command(
                 "docker --version",
@@ -84,7 +84,7 @@ class ProjetoRedesManager:
     
     def build_containers(self):
         """Constrói e sobe os containers"""
-        print(f"{Colors.OKBLUE}[2/7] Construindo e subindo containers...{Colors.ENDC}")
+        print(f"{Colors.OKBLUE}[2/8] Construindo e subindo containers...{Colors.ENDC}")
         self.run_command(
             "docker compose up -d --build",
             "Construindo e iniciando containers"
@@ -93,7 +93,7 @@ class ProjetoRedesManager:
     
     def wait_for_servers(self):
         """Aguarda os servidores ficarem prontos"""
-        print(f"{Colors.OKBLUE}[3/7] Aguardando servidores ficarem prontos...{Colors.ENDC}")
+        print(f"{Colors.OKBLUE}[3/8] Aguardando servidores ficarem prontos...{Colors.ENDC}")
         
         servers = [
             ("nginx_server", "53.82.0.10", "Nginx Python"),
@@ -130,7 +130,7 @@ class ProjetoRedesManager:
     
     def show_status(self):
         """Mostra o status dos containers"""
-        print(f"{Colors.OKBLUE}[4/7] Status dos containers:{Colors.ENDC}")
+        print(f"{Colors.OKBLUE}[4/8] Status dos containers:{Colors.ENDC}")
         self.run_command(
             "docker compose ps",
             "Listando containers",
@@ -139,7 +139,7 @@ class ProjetoRedesManager:
     
     def run_tests(self):
         """Executa os testes de carga"""
-        print(f"{Colors.OKBLUE}[5/7] Executando testes de carga...{Colors.ENDC}")
+        print(f"{Colors.OKBLUE}[5/8] Executando testes de carga...{Colors.ENDC}")
         print(f"{Colors.WARNING}Isso pode levar alguns minutos. Aguarde...{Colors.ENDC}\n")
         
         try:
@@ -155,7 +155,7 @@ class ProjetoRedesManager:
     
     def show_results(self):
         """Mostra um resumo dos resultados"""
-        print(f"{Colors.OKBLUE}[6/7] Resumo dos resultados:{Colors.ENDC}")
+        print(f"{Colors.OKBLUE}[6/8] Resumo dos resultados:{Colors.ENDC}")
         
         results_file = self.project_dir / "resultados" / "resultados_testes.txt"
         
@@ -192,7 +192,7 @@ class ProjetoRedesManager:
     
     def run_analysis(self):
         """Executa a análise automática dos resultados"""
-        print(f"{Colors.OKBLUE}[7/7] Gerando análise comparativa...{Colors.ENDC}")
+        print(f"{Colors.OKBLUE}[7/8] Gerando análise comparativa...{Colors.ENDC}")
         
         try:
             subprocess.run(
@@ -205,6 +205,43 @@ class ProjetoRedesManager:
             print(f"{Colors.OKGREEN}✓ Análise gerada com sucesso!{Colors.ENDC}\n")
         except:
             print(f"{Colors.WARNING}⚠ Erro ao gerar análise (não crítico){Colors.ENDC}\n")
+    
+    def generate_graphs(self):
+        """Gera gráficos comparativos"""
+        print(f"{Colors.OKBLUE}[8/8] Gerando gráficos comparativos...{Colors.ENDC}")
+        print(f"{Colors.WARNING}Isso pode levar alguns segundos...{Colors.ENDC}\n")
+        
+        try:
+            result = subprocess.run(
+                "docker exec load_client python3 /app/gerar_graficos.py",
+                shell=True,
+                cwd=self.project_dir,
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            
+            # Mostrar output do script
+            if result.stdout:
+                print(result.stdout)
+            
+            print(f"{Colors.OKGREEN}✓ Gráficos gerados com sucesso!{Colors.ENDC}\n")
+            
+            # Listar gráficos gerados
+            graficos_dir = self.project_dir / "resultados" / "graficos"
+            if graficos_dir.exists():
+                graficos = list(graficos_dir.glob("*.png"))
+                if graficos:
+                    print(f"{Colors.OKGREEN}📊 {len(graficos)} gráficos salvos em: resultados/graficos/{Colors.ENDC}")
+                    for grafico in sorted(graficos):
+                        print(f"  • {grafico.name}")
+                    print()
+            
+        except subprocess.CalledProcessError as e:
+            print(f"{Colors.WARNING}⚠ Erro ao gerar gráficos (não crítico){Colors.ENDC}")
+            if e.stderr:
+                print(f"{Colors.FAIL}{e.stderr}{Colors.ENDC}")
+            print()
     
     def show_access_info(self):
         """Mostra informações de acesso aos serviços"""
@@ -287,6 +324,9 @@ class ProjetoRedesManager:
             
             # Gerar análise
             self.run_analysis()
+            
+            # Gerar gráficos
+            self.generate_graphs()
             
             # Mostrar resultados
             self.show_results()
