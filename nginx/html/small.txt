@@ -1,0 +1,1 @@
+Este é um arquivo pequeno de teste para o servidor Nginx.

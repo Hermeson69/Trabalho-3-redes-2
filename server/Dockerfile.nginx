@@ -1,0 +1,15 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+# Copiar servidor
+COPY nginx_server.py /app/server.py
+
+# Copiar arquivos HTML
+COPY html-nginx/ /app/html/
+
+# Expor porta
+EXPOSE 80
+
+# Executar servidor
+CMD ["python3", "/app/server.py"]

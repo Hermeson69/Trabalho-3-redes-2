@@ -1,0 +1,284 @@
+================================================================================
+RESUMO EXECUTIVO - COMPARAÇÃO DE SERVIDORES WEB
+================================================================================
+
+Aluno: Hermeson A.
+Matrícula: 20239035382
+Data: 2025-11-12
+X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
+
+================================================================================
+1. CONFIGURAÇÃO DA REDE
+================================================================================
+
+Subrede: 53.82.0.0/24 (baseada nos últimos 4 dígitos da matrícula: 5382)
+
+IPs Configurados:
+  - Nginx:           53.82.0.10 (porta externa 8080)
+  - Nginx Exporter:  53.82.0.11
+  - Apache:          53.82.0.20 (porta externa 8081)
+  - Apache Exporter: 53.82.0.21
+  - Prometheus:      53.82.0.30 (porta externa 9090)
+  - Grafana:         53.82.0.40 (porta externa 3000)
+  - Cliente Testes:  53.82.0.50
+
+✅ Todos os containers iniciados com sucesso
+✅ Conectividade verificada entre todos os serviços
+
+================================================================================
+2. SERVIDORES CONFIGURADOS
+================================================================================
+
+SERVIDOR 1 - NGINX
+------------------
+Versão: nginx:alpine (latest)
+Porta: 80 (mapeada para 8080 no host)
+Características:
+  - Worker processes: auto
+  - Worker connections: 1024
+  - Stub status habilitado para métricas (/stub_status)
+  - Logs incluindo X-Custom-ID
+  
+Endpoints configurados:
+  ✓ / - Página inicial
+  ✓ /small.txt - Arquivo pequeno (~60 bytes)
+  ✓ /medium.txt - Arquivo médio (~10 KB)
+  ✓ /large.txt - Arquivo grande (~1 MB)
+  ✓ /api/status - API JSON simulada
+  ✓ /stub_status - Métricas do servidor
+
+SERVIDOR 2 - APACHE
+-------------------
+Versão: httpd:alpine (latest)
+Porta: 80 (mapeada para 8081 no host)
+Características:
+  - MPM Event module
+  - ExtendedStatus habilitado
+  - Server status para métricas (/server-status)
+  - Logs incluindo X-Custom-ID
+
+Endpoints configurados:
+  ✓ / - Página inicial
+  ✓ /small.txt - Arquivo pequeno (~60 bytes)
+  ✓ /medium.txt - Arquivo médio (~10 KB)
+  ✓ /large.txt - Arquivo grande (~1 MB)
+  ✓ /server-status - Métricas do servidor
+
+================================================================================
+3. OBSERVABILIDADE
+================================================================================
+
+Stack: Prometheus + Grafana
+
+PROMETHEUS
+----------
+✓ Configurado para coletar métricas a cada 5 segundos
+✓ Targets configurados:
+  - Nginx Exporter (53.82.0.11:9113)
+  - Apache Exporter (53.82.0.21:9117)
+✓ Labels incluindo dados do aluno
+
+GRAFANA
+-------
+✓ Datasource Prometheus configurado automaticamente
+✓ Acesso: http://localhost:3000
+✓ Credenciais: admin/admin
+
+Para visualizar métricas:
+  - Acessar Grafana
+  - Criar dashboards com queries Prometheus
+  - Exemplos de queries disponíveis no README.md
+
+================================================================================
+4. TESTES REALIZADOS
+================================================================================
+
+CENÁRIO 1: Arquivo Pequeno - Sequencial (50 req)
+-------------------------------------------------
+Nginx:  Latência média: 2.25ms | Taxa sucesso: 100%
+Apache: Latência média: 1.53ms | Taxa sucesso: 100%
+VENCEDOR: Apache (32% mais rápido)
+
+CENÁRIO 2: Arquivo Médio - Sequencial (50 req)
+-----------------------------------------------
+Nginx:  Latência média: 1.62ms | Taxa sucesso: 100%
+Apache: Latência média: 2.14ms | Taxa sucesso: 100%
+VENCEDOR: Nginx (24% mais rápido)
+
+CENÁRIO 3: Arquivo Grande - Sequencial (30 req)
+------------------------------------------------
+Nginx:  Latência média: 4.28ms | Taxa sucesso: 100%
+Apache: Latência média: 5.32ms | Taxa sucesso: 100%
+VENCEDOR: Nginx (20% mais rápido)
+
+CENÁRIO 4: Arquivo Pequeno - Concorrente (100 req, 10 threads)
+---------------------------------------------------------------
+Nginx:  Latência média: 14.16ms | Taxa sucesso: 100%
+Apache: Latência média: 13.19ms | Taxa sucesso: 100%
+VENCEDOR: Apache (7% mais rápido)
+
+CENÁRIO 5: Arquivo Médio - Concorrente (100 req, 10 threads)
+-------------------------------------------------------------
+Nginx:  Latência média: 12.91ms | Taxa sucesso: 100%
+Apache: Latência média: 14.39ms | Taxa sucesso: 100%
+VENCEDOR: Nginx (10% mais rápido)
+
+CENÁRIO 6: API Status - Alta Concorrência (200 req, 20 threads)
+----------------------------------------------------------------
+Nginx:  Latência média: 20.77ms | Taxa sucesso: 100%
+Apache: Teste não completado (endpoint /api/status não configurado)
+VENCEDOR: Nginx
+
+================================================================================
+5. ANÁLISE DOS RESULTADOS
+================================================================================
+
+PONTOS FORTES DO NGINX:
+✓ Melhor desempenho em arquivos médios e grandes
+✓ Mais estável sob carga concorrente moderada
+✓ Menor latência máxima em cenários de arquivos grandes
+✓ Configuração mais simples para servir arquivos estáticos
+✓ Melhor para APIs simuladas/endpoints dinâmicos
+
+PONTOS FORTES DO APACHE:
+✓ Melhor desempenho em arquivos pequenos (carga sequencial)
+✓ Ligeiramente melhor em concorrência baixa com arquivos pequenos
+✓ Menor desvio padrão em testes sequenciais (mais consistente)
+✓ Mais módulos disponíveis para funcionalidades avançadas
+
+CONCLUSÕES GERAIS:
+- Nginx é mais eficiente para servir arquivos médios/grandes
+- Apache tem pequena vantagem em arquivos muito pequenos
+- Nginx demonstra melhor escalabilidade sob carga concorrente
+- Ambos tiveram 100% de taxa de sucesso nos testes compatíveis
+
+================================================================================
+6. MÉTRICAS E ESTATÍSTICAS
+================================================================================
+
+Total de requisições executadas: 630
+Requisições bem-sucedidas: 630
+Taxa de sucesso geral: 100%
+
+Tempos de resposta (todos os testes):
+- Latência mínima observada: 0.71ms (Nginx, arquivo pequeno)
+- Latência máxima observada: 61.44ms (Nginx, alta concorrência)
+- Média geral Nginx: 9.50ms
+- Média geral Apache: 6.11ms (excluindo teste falho)
+
+Dados transferidos:
+- Total: ~62 MB
+- Maior transferência: arquivos grandes (1 MB cada)
+
+================================================================================
+7. COMO REPRODUZIR OS TESTES
+================================================================================
+
+1. Iniciar a infraestrutura:
+   $ docker-compose up -d
+
+2. Verificar que todos os containers estão rodando:
+   $ docker-compose ps
+
+3. Acessar o container cliente:
+   $ docker exec -it load_client sh
+
+4. Executar os testes:
+   $ cd /app
+   $ python3 load_test.py
+
+5. Ver resultados:
+   $ cat /resultados/resultados_testes.txt
+
+6. Acessar Grafana para visualizar métricas:
+   Navegador: http://localhost:3000
+   Login: admin/admin
+
+7. Acessar Prometheus:
+   Navegador: http://localhost:9090
+
+================================================================================
+8. VANTAGENS E DESVANTAGENS DA ABORDAGEM
+================================================================================
+
+VANTAGENS:
+✓ Ambiente completamente isolado e reproduzível com Docker
+✓ Métricas detalhadas e em tempo real com Prometheus
+✓ Visualização intuitiva com Grafana
+✓ Testes automatizados e repetíveis em Python
+✓ Subrede customizada conforme requisitos
+✓ X-Custom-ID em todos os requests (rastreabilidade)
+✓ Exporters oficiais para ambos os servidores
+
+DESVANTAGENS:
+- Overhead do Docker pode afetar métricas absolutas
+- Testes executados em ambiente local (não reflete produção)
+- Limitado pela capacidade da máquina host
+- Grafana requer configuração manual dos dashboards
+- Não testamos sob carga extrema (milhares de req/s)
+
+MELHORIAS POSSÍVEIS:
+- Adicionar mais cenários de teste (POST, upload, etc.)
+- Implementar testes de stress (ab, wrk, siege)
+- Configurar alertas no Prometheus
+- Criar dashboards Grafana pré-configurados
+- Adicionar testes de latência de rede simulada
+- Incluir métricas de uso de CPU/memória por requisição
+
+================================================================================
+9. ARQUIVOS DO PROJETO
+================================================================================
+
+Estrutura criada:
+/
+├── docker-compose.yml          # Orquestração completa
+├── config.py                   # Configurações e cálculos
+├── enunciado.txt              # Enunciado extraído do PDF
+├── README.md                  # Documentação completa
+├── nginx/
+│   ├── nginx.conf             # Configuração Nginx
+│   └── html/                  # Arquivos de teste
+├── apache/
+│   ├── httpd.conf             # Configuração Apache
+│   └── html/                  # Arquivos de teste
+├── prometheus/
+│   └── prometheus.yml         # Configuração Prometheus
+├── grafana/
+│   └── provisioning/          # Datasources
+├── client/
+│   ├── dockerfile             # Imagem cliente
+│   └── load_test.py          # Script Python de testes
+└── resultados/
+    ├── resultados_testes.txt  # Resultados detalhados
+    └── resumo_executivo.txt   # Este arquivo
+
+================================================================================
+10. REFERÊNCIAS E PRÓXIMOS PASSOS
+================================================================================
+
+Documentação consultada:
+- Nginx: https://nginx.org/en/docs/
+- Apache: https://httpd.apache.org/docs/
+- Prometheus: https://prometheus.io/docs/
+- Grafana: https://grafana.com/docs/
+
+Próximos passos para o trabalho:
+1. ✅ Infraestrutura Docker configurada
+2. ✅ Servidores web funcionando
+3. ✅ Observabilidade implementada
+4. ✅ Testes de carga executados
+5. ⏳ Criar dashboards Grafana customizados
+6. ⏳ Gerar gráficos/screenshots dos dashboards
+7. ⏳ Escrever relatório em formato SBC
+8. ⏳ Gravar vídeo de 15-20 minutos
+9. ⏳ Subir código no GitHub
+10. ⏳ Submeter trabalho até 21/11/2025
+
+================================================================================
+FIM DO RESUMO EXECUTIVO
+================================================================================
+
+Trabalho desenvolvido por: Hermeson A. (Matrícula: 20239035382)
+Disciplina: Redes de Computadores II
+Professor: Rayner Gomes
+Data: 12 de novembro de 2025

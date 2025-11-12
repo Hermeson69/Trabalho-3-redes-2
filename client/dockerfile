@@ -1,0 +1,12 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+# Instalar dependências do sistema
+RUN apk add --no-cache curl
+
+# Copiar scripts
+COPY . /app/
+
+# Manter container rodando
+CMD ["tail", "-f", "/dev/null"]
