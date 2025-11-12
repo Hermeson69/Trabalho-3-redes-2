@@ -10,110 +10,110 @@ TESTE 1: Teste 1: Arquivo Pequeno - 50 requisições sequenciais
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |            1.16 |            2.85 |          -59.3% | Nginx ⭐
-Latência Mediana (ms)          |            1.00 |            2.83 |          -64.7% | Nginx ⭐
-Desvio Padrão (ms)             |            0.89 |            0.97 |           -8.2% | Nginx ⭐
-Latência Mínima (ms)           |            0.42 |            1.47 |          -71.4% | Nginx ⭐
-Latência Máxima (ms)           |            6.42 |            6.83 |           -6.0% | Nginx ⭐
+Latência Média (ms)            |            0.99 |            0.70 |           41.4% | Apache ⭐
+Latência Mediana (ms)          |            0.68 |            0.49 |           38.8% | Apache ⭐
+Desvio Padrão (ms)             |            1.64 |            0.56 |          192.9% | Apache ⭐
+Latência Mínima (ms)           |            0.40 |            0.40 |            0.0% | Empate
+Latência Máxima (ms)           |           12.14 |            3.86 |          214.5% | Apache ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 2: Teste 2: Arquivo Médio - 50 requisições sequenciais
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |            3.41 |            1.11 |          207.2% | Apache ⭐
-Latência Mediana (ms)          |            3.19 |            0.96 |          232.3% | Apache ⭐
-Desvio Padrão (ms)             |            0.97 |            0.60 |           61.7% | Apache ⭐
-Latência Mínima (ms)           |            1.91 |            0.35 |          445.7% | Apache ⭐
-Latência Máxima (ms)           |            8.11 |            3.16 |          156.6% | Apache ⭐
+Latência Média (ms)            |            0.97 |            0.69 |           40.6% | Apache ⭐
+Latência Mediana (ms)          |            0.89 |            0.50 |           78.0% | Apache ⭐
+Desvio Padrão (ms)             |            0.50 |            0.52 |           -3.8% | Nginx ⭐
+Latência Mínima (ms)           |            0.49 |            0.43 |           14.0% | Apache ⭐
+Latência Máxima (ms)           |            3.91 |            3.96 |           -1.3% | Nginx ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 3: Teste 3: Arquivo Grande - 30 requisições sequenciais
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |            2.24 |            7.84 |          -71.4% | Nginx ⭐
-Latência Mediana (ms)          |            2.19 |            7.74 |          -71.7% | Nginx ⭐
-Desvio Padrão (ms)             |            0.70 |            3.19 |          -78.1% | Nginx ⭐
-Latência Mínima (ms)           |            1.04 |            2.94 |          -64.6% | Nginx ⭐
-Latência Máxima (ms)           |            3.55 |           17.56 |          -79.8% | Nginx ⭐
+Latência Média (ms)            |            2.76 |            3.14 |          -12.1% | Nginx ⭐
+Latência Mediana (ms)          |            2.01 |            2.30 |          -12.6% | Nginx ⭐
+Desvio Padrão (ms)             |            2.72 |            2.45 |           11.0% | Apache ⭐
+Latência Mínima (ms)           |            1.78 |            1.85 |           -3.8% | Nginx ⭐
+Latência Máxima (ms)           |           16.79 |           15.34 |            9.5% | Apache ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 4: Teste 4: Arquivo Pequeno - 100 requisições concorrentes (10 threads)
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |           49.10 |           42.00 |           16.9% | Apache ⭐
-Latência Mediana (ms)          |            5.91 |           11.48 |          -48.5% | Nginx ⭐
-Desvio Padrão (ms)             |          204.30 |          173.35 |           17.9% | Apache ⭐
-Latência Mínima (ms)           |            1.43 |            4.01 |          -64.3% | Nginx ⭐
-Latência Máxima (ms)           |         1072.43 |         1031.88 |            3.9% | Apache ⭐
+Latência Média (ms)            |           35.73 |           34.26 |            4.3% | Apache ⭐
+Latência Mediana (ms)          |            4.80 |            3.37 |           42.4% | Apache ⭐
+Desvio Padrão (ms)             |          177.44 |          172.34 |            3.0% | Apache ⭐
+Latência Mínima (ms)           |            2.94 |            2.25 |           30.7% | Apache ⭐
+Latência Máxima (ms)           |         1041.57 |         1010.03 |            3.1% | Apache ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 5: Teste 5: Arquivo Médio - 100 requisições concorrentes (10 threads)
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |           44.19 |           38.25 |           15.5% | Apache ⭐
-Latência Mediana (ms)          |           12.13 |            4.22 |          187.4% | Apache ⭐
-Desvio Padrão (ms)             |          180.29 |          177.94 |            1.3% | Apache ⭐
-Latência Mínima (ms)           |            7.29 |            1.70 |          328.8% | Apache ⭐
-Latência Máxima (ms)           |         1069.31 |         1046.21 |            2.2% | Apache ⭐
+Latência Média (ms)            |           28.40 |           44.91 |          -36.8% | Nginx ⭐
+Latência Mediana (ms)          |            5.57 |            4.53 |           23.0% | Apache ⭐
+Desvio Padrão (ms)             |          146.43 |          198.44 |          -26.2% | Nginx ⭐
+Latência Mínima (ms)           |            3.54 |            2.46 |           43.9% | Apache ⭐
+Latência Máxima (ms)           |         1045.54 |         1017.55 |            2.8% | Apache ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 6: Teste 6: Arquivo Grande - 50 requisições concorrentes (10 threads)
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |          106.68 |          106.62 |            0.1% | Apache ⭐
-Latência Mediana (ms)          |           48.24 |           46.81 |            3.1% | Apache ⭐
-Desvio Padrão (ms)             |          241.58 |          245.61 |           -1.6% | Nginx ⭐
-Latência Mínima (ms)           |           14.65 |           14.71 |           -0.4% | Nginx ⭐
-Latência Máxima (ms)           |         1078.33 |         1071.00 |            0.7% | Apache ⭐
+Latência Média (ms)            |           75.34 |           57.72 |           30.5% | Apache ⭐
+Latência Mediana (ms)          |           15.95 |           14.06 |           13.4% | Apache ⭐
+Desvio Padrão (ms)             |          241.15 |          198.89 |           21.2% | Apache ⭐
+Latência Mínima (ms)           |            5.94 |            5.80 |            2.4% | Apache ⭐
+Latência Máxima (ms)           |         1023.12 |         1012.91 |            1.0% | Apache ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 7: Teste 7: Arquivo Extra Grande (10MB) - 20 requisições sequenciais
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |           30.60 |           21.19 |           44.4% | Apache ⭐
-Latência Mediana (ms)          |           28.12 |           13.36 |          110.5% | Apache ⭐
-Desvio Padrão (ms)             |           13.09 |           12.99 |            0.8% | Apache ⭐
-Latência Mínima (ms)           |           13.37 |           10.38 |           28.8% | Apache ⭐
-Latência Máxima (ms)           |           56.33 |           48.57 |           16.0% | Apache ⭐
+Latência Média (ms)            |           21.69 |           20.69 |            4.8% | Apache ⭐
+Latência Mediana (ms)          |           16.99 |           15.32 |           10.9% | Apache ⭐
+Desvio Padrão (ms)             |           16.86 |           22.35 |          -24.6% | Nginx ⭐
+Latência Mínima (ms)           |           14.56 |            9.58 |           52.0% | Apache ⭐
+Latência Máxima (ms)           |           91.13 |          114.82 |          -20.6% | Nginx ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 8: Teste 8: Arquivo Extra Grande (10MB) - 30 requisições concorrentes (5 threads)
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |          165.32 |          116.93 |           41.4% | Apache ⭐
-Latência Mediana (ms)          |          190.08 |           86.06 |          120.9% | Apache ⭐
-Desvio Padrão (ms)             |           67.59 |           65.85 |            2.6% | Apache ⭐
-Latência Mínima (ms)           |           19.14 |           15.49 |           23.6% | Apache ⭐
-Latência Máxima (ms)           |          247.90 |          234.29 |            5.8% | Apache ⭐
+Latência Média (ms)            |           46.12 |           53.96 |          -14.5% | Nginx ⭐
+Latência Mediana (ms)          |           37.04 |           43.40 |          -14.7% | Nginx ⭐
+Desvio Padrão (ms)             |           20.06 |           20.85 |           -3.8% | Nginx ⭐
+Latência Mínima (ms)           |           17.25 |           18.58 |           -7.2% | Nginx ⭐
+Latência Máxima (ms)           |          100.30 |           90.28 |           11.1% | Apache ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 9: Teste 9: Arquivo XXL (50MB) - 10 requisições sequenciais
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |          132.92 |          127.13 |            4.6% | Apache ⭐
-Latência Mediana (ms)          |          129.55 |          108.11 |           19.8% | Apache ⭐
-Desvio Padrão (ms)             |           69.88 |           51.81 |           34.9% | Apache ⭐
-Latência Mínima (ms)           |           49.35 |           66.74 |          -26.1% | Nginx ⭐
-Latência Máxima (ms)           |          225.41 |          223.30 |            0.9% | Apache ⭐
+Latência Média (ms)            |           90.88 |           89.79 |            1.2% | Apache ⭐
+Latência Mediana (ms)          |           60.14 |           44.06 |           36.5% | Apache ⭐
+Desvio Padrão (ms)             |          103.46 |          122.85 |          -15.8% | Nginx ⭐
+Latência Mínima (ms)           |           37.13 |           33.01 |           12.5% | Apache ⭐
+Latência Máxima (ms)           |          382.78 |          433.27 |          -11.7% | Nginx ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 TESTE 10: Teste 10: API Status - 200 requisições concorrentes (20 threads)
 ----------------------------------------------------------------------------------------------------
 Métrica                        |           Nginx |          Apache |       Diferença | Vencedor
 ----------------------------------------------------------------------------------------------------
-Latência Média (ms)            |           91.57 |           78.29 |           17.0% | Apache ⭐
-Latência Mediana (ms)          |           10.00 |            9.04 |           10.6% | Apache ⭐
-Desvio Padrão (ms)             |          320.15 |          267.29 |           19.8% | Apache ⭐
-Latência Mínima (ms)           |            5.39 |            3.99 |           35.1% | Apache ⭐
-Latência Máxima (ms)           |         2062.29 |         1272.05 |           62.1% | Apache ⭐
+Latência Média (ms)            |           73.25 |           78.95 |           -7.2% | Nginx ⭐
+Latência Mediana (ms)          |            6.73 |            4.37 |           54.0% | Apache ⭐
+Desvio Padrão (ms)             |          264.92 |          283.87 |           -6.7% | Nginx ⭐
+Latência Mínima (ms)           |            2.02 |            2.27 |          -11.0% | Nginx ⭐
+Latência Máxima (ms)           |         1260.77 |         1268.95 |           -0.6% | Nginx ⭐
 Taxa de Sucesso (%)            |          100.00 |          100.00 |            0.0% | Empate
 
 ====================================================================================================
@@ -123,15 +123,15 @@ ESTATÍSTICAS GERAIS
 ====================================================================================================
 
 Latência Média Geral:
-  Nginx:  62.72 ms
-  Apache: 54.22 ms
-  Diferença: 8.50 ms
-  Vencedor: Apache (⭐ 15.7% mais rápido)
+  Nginx:  37.61 ms
+  Apache: 38.48 ms
+  Diferença: 0.87 ms
+  Vencedor: Nginx (⭐ 2.3% mais rápido)
 
 Placar de Vitórias (por latência média):
-  Nginx:  2 vitórias
-  Apache: 7 vitórias
-  Empates: 1
+  Nginx:  3 vitórias
+  Apache: 4 vitórias
+  Empates: 3
 
 🏆 VENCEDOR GERAL: APACHE
 
