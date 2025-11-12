@@ -1,0 +1,45 @@
+services:
+  server-seq:
+    build:
+      context: ./sequential-server
+      dockerfile: Dockerfile
+    container_name: server-seq
+    hostname: server-seq
+    networks:
+      rede-http:
+        ipv4_address: 53.82.0.2
+    ports:
+      - "8080:80"
+  
+  server-con:
+    build:
+      context: ./concurrent-server
+      dockerfile: Dockerfile
+    container_name: server-con
+    hostname: server-con
+    networks:
+      rede-http:
+        ipv4_address: 53.82.0.3
+    ports:
+      - "8081:80"
+      
+  client1:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: client-http
+    hostname: client-http
+    command: "sleep infinity"
+    networks:
+      rede-http:
+        ipv4_address: 53.82.0.4
+    depends_on:
+      - server-seq
+      - server-con
+
+networks:
+  rede-http:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 53.82.0.0/24
