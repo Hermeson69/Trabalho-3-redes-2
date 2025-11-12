@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+Gerenciador Principal do Projeto
+Aluno: Hermeson A. | Matrícula: 20239035382
+"""
 import subprocess
 import time
 import sys
@@ -6,7 +11,6 @@ import os
 from pathlib import Path
 
 class Colors:
-    """Cores para output no terminal"""
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'

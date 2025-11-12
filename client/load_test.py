@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """
-Script de teste de carga para comparação de servidores web
-Aluno: Hermeson A.
-Matrícula: 20239035382
-
-Realiza testes de carga HTTP com X-Custom-ID e salva resultados em TXT
+Testes de Carga HTTP
+Aluno: Hermeson A. | Matrícula: 20239035382
 """
 import http.client
 import hashlib

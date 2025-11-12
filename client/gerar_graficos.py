@@ -1,17 +1,13 @@
 #!/usr/bin/env python3
 """
-Gerador de Gráficos de Análise de Performance
-Aluno: Hermeson A.
-Matrícula: 20239035382
-
-Gera gráficos comparativos dos testes de carga usando matplotlib
+Gerador de Gráficos Comparativos
+Aluno: Hermeson A. | Matrícula: 20239035382
 """
 
 import re
 import json
 from pathlib import Path
 
-# Verificar se matplotlib está disponível
 try:
     import matplotlib
     matplotlib.use('Agg')  # Backend sem display

@@ -1,10 +1,6 @@
-#!/usr/bin/env python3
 """
-Script para análise e visualização dos resultados dos testes
-Aluno: Hermeson A.
-Matrícula: 20239035382
-
-Este script lê os resultados dos testes e gera análises em formato texto
+Análise de Resultados dos Testes de Carga
+Aluno: Hermeson A. | Matrícula: 20239035382
 """
 
 import re
