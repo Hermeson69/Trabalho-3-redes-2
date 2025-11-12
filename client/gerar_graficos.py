@@ -61,6 +61,9 @@ class GeradorGraficos:
                 'apache': dados_apache
             })
         
+        # Criar self.resultados como lista de tuplas (nginx, apache) para gráficos de linha
+        self.resultados = [(d['nginx'], d['apache']) for d in self.dados]
+        
         print(f"✓ {len(self.dados)} testes carregados")
         return len(self.dados) > 0
     
@@ -330,6 +333,161 @@ class GeradorGraficos:
                        f'{height:.2f}',
                        ha='center', va='bottom', fontsize=8)
     
+    def gerar_grafico_linhas_evolucao(self):
+        """Gera gráfico de linhas da evolução de latência por teste"""
+        print("Gerando gráfico de linhas - Evolução de Latência...")
+        
+        fig, ax = plt.subplots(figsize=(14, 8))
+        
+        testes = []
+        nginx_lat = []
+        apache_lat = []
+        
+        for i, (nginx, apache) in enumerate(self.resultados, 1):
+            testes.append(f"T{i}")
+            nginx_lat.append(nginx['latencia_media'])
+            apache_lat.append(apache['latencia_media'])
+        
+        x = range(len(testes))
+        
+        ax.plot(x, nginx_lat, marker='o', linewidth=2, markersize=8, 
+                label='Nginx', color='#2ecc71', linestyle='-')
+        ax.plot(x, apache_lat, marker='s', linewidth=2, markersize=8,
+                label='Apache', color='#e74c3c', linestyle='-')
+        
+        ax.set_xlabel('Teste', fontweight='bold', fontsize=11)
+        ax.set_ylabel('Latência Média (ms)', fontweight='bold', fontsize=11)
+        ax.set_title('Evolução da Latência Média por Teste', 
+                    fontweight='bold', fontsize=13, pad=20)
+        
+        ax.set_xticks(x)
+        ax.set_xticklabels(testes)
+        ax.legend(fontsize=10)
+        ax.grid(True, alpha=0.3)
+        
+        # Adicionar valores nos pontos
+        for i, (nx, ap) in enumerate(zip(nginx_lat, apache_lat)):
+            ax.text(i, nx, f'{nx:.1f}', ha='center', va='bottom', fontsize=8)
+            ax.text(i, ap, f'{ap:.1f}', ha='center', va='top', fontsize=8)
+        
+        plt.tight_layout()
+        arquivo = self.graficos_dir / 'linhas_evolucao_latencia.png'
+        plt.savefig(arquivo, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        print(f"✓ Gráfico salvo: {arquivo}")
+    
+    def gerar_grafico_linhas_min_max(self):
+        """Gera gráfico de linhas com latências mínima e máxima"""
+        print("Gerando gráfico de linhas - Latências Mínima e Máxima...")
+        
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10))
+        
+        testes = []
+        nginx_min = []
+        apache_min = []
+        nginx_max = []
+        apache_max = []
+        
+        for i, (nginx, apache) in enumerate(self.resultados, 1):
+            testes.append(f"T{i}")
+            nginx_min.append(nginx['latencia_min'])
+            apache_min.append(apache['latencia_min'])
+            nginx_max.append(nginx['latencia_max'])
+            apache_max.append(apache['latencia_max'])
+        
+        x = range(len(testes))
+        
+        # Gráfico de latências mínimas
+        ax1.plot(x, nginx_min, marker='o', linewidth=2, markersize=8,
+                label='Nginx', color='#2ecc71', linestyle='-')
+        ax1.plot(x, apache_min, marker='s', linewidth=2, markersize=8,
+                label='Apache', color='#e74c3c', linestyle='-')
+        
+        ax1.set_ylabel('Latência Mínima (ms)', fontweight='bold', fontsize=11)
+        ax1.set_title('Latências Mínimas por Teste', 
+                     fontweight='bold', fontsize=12, pad=15)
+        ax1.set_xticks(x)
+        ax1.set_xticklabels(testes)
+        ax1.legend(fontsize=10)
+        ax1.grid(True, alpha=0.3)
+        
+        # Gráfico de latências máximas
+        ax2.plot(x, nginx_max, marker='o', linewidth=2, markersize=8,
+                label='Nginx', color='#2ecc71', linestyle='-')
+        ax2.plot(x, apache_max, marker='s', linewidth=2, markersize=8,
+                label='Apache', color='#e74c3c', linestyle='-')
+        
+        ax2.set_xlabel('Teste', fontweight='bold', fontsize=11)
+        ax2.set_ylabel('Latência Máxima (ms)', fontweight='bold', fontsize=11)
+        ax2.set_title('Latências Máximas por Teste', 
+                     fontweight='bold', fontsize=12, pad=15)
+        ax2.set_xticks(x)
+        ax2.set_xticklabels(testes)
+        ax2.legend(fontsize=10)
+        ax2.grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        arquivo = self.graficos_dir / 'linhas_min_max.png'
+        plt.savefig(arquivo, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        print(f"✓ Gráfico salvo: {arquivo}")
+    
+    def gerar_grafico_linhas_desvio(self):
+        """Gera gráfico de linhas do desvio padrão com área de variação"""
+        print("Gerando gráfico de linhas - Desvio Padrão com Área...")
+        
+        fig, ax = plt.subplots(figsize=(14, 8))
+        
+        testes = []
+        nginx_media = []
+        apache_media = []
+        nginx_desvio = []
+        apache_desvio = []
+        
+        for i, (nginx, apache) in enumerate(self.resultados, 1):
+            testes.append(f"T{i}")
+            nginx_media.append(nginx['latencia_media'])
+            apache_media.append(apache['latencia_media'])
+            nginx_desvio.append(nginx['desvio_padrao'])
+            apache_desvio.append(apache['desvio_padrao'])
+        
+        x = np.array(range(len(testes)))
+        nginx_media = np.array(nginx_media)
+        apache_media = np.array(apache_media)
+        nginx_desvio = np.array(nginx_desvio)
+        apache_desvio = np.array(apache_desvio)
+        
+        # Linhas principais
+        ax.plot(x, nginx_media, marker='o', linewidth=2, markersize=8,
+               label='Nginx', color='#2ecc71', linestyle='-')
+        ax.plot(x, apache_media, marker='s', linewidth=2, markersize=8,
+               label='Apache', color='#e74c3c', linestyle='-')
+        
+        # Área de variação (média ± desvio padrão)
+        ax.fill_between(x, nginx_media - nginx_desvio, nginx_media + nginx_desvio,
+                        alpha=0.2, color='#2ecc71', label='Nginx ±σ')
+        ax.fill_between(x, apache_media - apache_desvio, apache_media + apache_desvio,
+                        alpha=0.2, color='#e74c3c', label='Apache ±σ')
+        
+        ax.set_xlabel('Teste', fontweight='bold', fontsize=11)
+        ax.set_ylabel('Latência (ms)', fontweight='bold', fontsize=11)
+        ax.set_title('Latência Média com Área de Variação (±σ)', 
+                    fontweight='bold', fontsize=13, pad=20)
+        
+        ax.set_xticks(x)
+        ax.set_xticklabels(testes)
+        ax.legend(fontsize=9, loc='upper left')
+        ax.grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        arquivo = self.graficos_dir / 'linhas_desvio_area.png'
+        plt.savefig(arquivo, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        print(f"✓ Gráfico salvo: {arquivo}")
+    
     def gerar_todos_graficos(self):
         """Gera todos os gráficos"""
         print("\n" + "=" * 80)
@@ -348,14 +506,20 @@ class GeradorGraficos:
         if not self.ler_resultados():
             return False
         
-        print(f"\nGerando {5} gráficos...")
+        print(f"\nGerando {8} gráficos...")
         print()
         
+        # Gráficos de barras
         self.gerar_grafico_latencia_media()
         self.gerar_grafico_desvio_padrao()
         self.gerar_grafico_latencia_min_max()
         self.gerar_grafico_vencedores()
         self.gerar_grafico_comparativo_geral()
+        
+        # Gráficos de linhas
+        self.gerar_grafico_linhas_evolucao()
+        self.gerar_grafico_linhas_min_max()
+        self.gerar_grafico_linhas_desvio()
         
         print()
         print("=" * 80)

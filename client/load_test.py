@@ -232,7 +232,35 @@ def main():
             'concurrency': 10
         },
         {
-            'name': 'Teste 6: API Status - 200 requisições concorrentes (20 threads)',
+            'name': 'Teste 6: Arquivo Grande - 50 requisições concorrentes (10 threads)',
+            'endpoint': '/large.txt',
+            'num_requests': 50,
+            'concurrent': True,
+            'concurrency': 10
+        },
+        {
+            'name': 'Teste 7: Arquivo Extra Grande (10MB) - 20 requisições sequenciais',
+            'endpoint': '/xlarge.txt',
+            'num_requests': 20,
+            'concurrent': False,
+            'concurrency': 1
+        },
+        {
+            'name': 'Teste 8: Arquivo Extra Grande (10MB) - 30 requisições concorrentes (5 threads)',
+            'endpoint': '/xlarge.txt',
+            'num_requests': 30,
+            'concurrent': True,
+            'concurrency': 5
+        },
+        {
+            'name': 'Teste 9: Arquivo XXL (50MB) - 10 requisições sequenciais',
+            'endpoint': '/xxlarge.txt',
+            'num_requests': 10,
+            'concurrent': False,
+            'concurrency': 1
+        },
+        {
+            'name': 'Teste 10: API Status - 200 requisições concorrentes (20 threads)',
             'endpoint': '/api/status',
             'num_requests': 200,
             'concurrent': True,

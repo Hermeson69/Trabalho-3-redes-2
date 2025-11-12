@@ -1,6 +1,6 @@
 ================================================================================
 TESTE: Teste 1: Arquivo Pequeno - 50 requisições sequenciais
-Data/Hora: 2025-11-12 14:05:24
+Data/Hora: 2025-11-12 22:19:13
 Aluno: Hermeson A.
 Matrícula: 20239035382
 X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
@@ -11,11 +11,11 @@ Total de requisições: 50
 Requisições bem-sucedidas: 50
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 1.06 ms
-Latência mediana: 0.85 ms
-Desvio padrão: 1.23 ms
-Latência mínima: 0.56 ms
-Latência máxima: 9.45 ms
+Latência média: 1.16 ms
+Latência mediana: 1.00 ms
+Desvio padrão: 0.89 ms
+Latência mínima: 0.42 ms
+Latência máxima: 6.42 ms
 Tamanho total de resposta: 2950 bytes
 
 --- Servidor: APACHE ---
@@ -23,17 +23,17 @@ Total de requisições: 50
 Requisições bem-sucedidas: 50
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 1.04 ms
-Latência mediana: 0.99 ms
-Desvio padrão: 0.34 ms
-Latência mínima: 0.62 ms
-Latência máxima: 3.01 ms
+Latência média: 2.85 ms
+Latência mediana: 2.83 ms
+Desvio padrão: 0.97 ms
+Latência mínima: 1.47 ms
+Latência máxima: 6.83 ms
 Tamanho total de resposta: 3000 bytes
 
 ================================================================================
 ================================================================================
 TESTE: Teste 2: Arquivo Médio - 50 requisições sequenciais
-Data/Hora: 2025-11-12 14:05:24
+Data/Hora: 2025-11-12 22:19:14
 Aluno: Hermeson A.
 Matrícula: 20239035382
 X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
@@ -44,11 +44,11 @@ Total de requisições: 50
 Requisições bem-sucedidas: 50
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 0.94 ms
-Latência mediana: 0.86 ms
-Desvio padrão: 0.30 ms
-Latência mínima: 0.53 ms
-Latência máxima: 1.65 ms
+Latência média: 3.41 ms
+Latência mediana: 3.19 ms
+Desvio padrão: 0.97 ms
+Latência mínima: 1.91 ms
+Latência máxima: 8.11 ms
 Tamanho total de resposta: 500050 bytes
 
 --- Servidor: APACHE ---
@@ -56,17 +56,17 @@ Total de requisições: 50
 Requisições bem-sucedidas: 50
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 0.61 ms
-Latência mediana: 0.54 ms
-Desvio padrão: 0.14 ms
-Latência mínima: 0.47 ms
-Latência máxima: 1.04 ms
+Latência média: 1.11 ms
+Latência mediana: 0.96 ms
+Desvio padrão: 0.60 ms
+Latência mínima: 0.35 ms
+Latência máxima: 3.16 ms
 Tamanho total de resposta: 500050 bytes
 
 ================================================================================
 ================================================================================
 TESTE: Teste 3: Arquivo Grande - 30 requisições sequenciais
-Data/Hora: 2025-11-12 14:05:24
+Data/Hora: 2025-11-12 22:19:14
 Aluno: Hermeson A.
 Matrícula: 20239035382
 X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
@@ -77,11 +77,11 @@ Total de requisições: 30
 Requisições bem-sucedidas: 30
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 2.55 ms
-Latência mediana: 2.40 ms
-Desvio padrão: 0.49 ms
-Latência mínima: 1.93 ms
-Latência máxima: 3.54 ms
+Latência média: 2.24 ms
+Latência mediana: 2.19 ms
+Desvio padrão: 0.70 ms
+Latência mínima: 1.04 ms
+Latência máxima: 3.55 ms
 Tamanho total de resposta: 30000030 bytes
 
 --- Servidor: APACHE ---
@@ -89,17 +89,17 @@ Total de requisições: 30
 Requisições bem-sucedidas: 30
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 3.38 ms
-Latência mediana: 3.08 ms
-Desvio padrão: 0.85 ms
-Latência mínima: 2.54 ms
-Latência máxima: 6.42 ms
+Latência média: 7.84 ms
+Latência mediana: 7.74 ms
+Desvio padrão: 3.19 ms
+Latência mínima: 2.94 ms
+Latência máxima: 17.56 ms
 Tamanho total de resposta: 30000030 bytes
 
 ================================================================================
 ================================================================================
 TESTE: Teste 4: Arquivo Pequeno - 100 requisições concorrentes (10 threads)
-Data/Hora: 2025-11-12 14:05:26
+Data/Hora: 2025-11-12 22:19:16
 Aluno: Hermeson A.
 Matrícula: 20239035382
 X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
@@ -110,11 +110,11 @@ Total de requisições: 100
 Requisições bem-sucedidas: 100
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 35.70 ms
-Latência mediana: 5.43 ms
-Desvio padrão: 173.12 ms
-Latência mínima: 3.17 ms
-Latência máxima: 1016.75 ms
+Latência média: 49.10 ms
+Latência mediana: 5.91 ms
+Desvio padrão: 204.30 ms
+Latência mínima: 1.43 ms
+Latência máxima: 1072.43 ms
 Tamanho total de resposta: 5900 bytes
 
 --- Servidor: APACHE ---
@@ -122,17 +122,17 @@ Total de requisições: 100
 Requisições bem-sucedidas: 100
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 36.25 ms
-Latência mediana: 4.68 ms
-Desvio padrão: 175.52 ms
-Latência mínima: 1.78 ms
-Latência máxima: 1055.92 ms
+Latência média: 42.00 ms
+Latência mediana: 11.48 ms
+Desvio padrão: 173.35 ms
+Latência mínima: 4.01 ms
+Latência máxima: 1031.88 ms
 Tamanho total de resposta: 6000 bytes
 
 ================================================================================
 ================================================================================
 TESTE: Teste 5: Arquivo Médio - 100 requisições concorrentes (10 threads)
-Data/Hora: 2025-11-12 14:05:28
+Data/Hora: 2025-11-12 22:19:18
 Aluno: Hermeson A.
 Matrícula: 20239035382
 X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
@@ -143,11 +143,11 @@ Total de requisições: 100
 Requisições bem-sucedidas: 100
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 35.27 ms
-Latência mediana: 4.97 ms
-Desvio padrão: 173.22 ms
-Latência mínima: 2.46 ms
-Latência máxima: 1016.49 ms
+Latência média: 44.19 ms
+Latência mediana: 12.13 ms
+Desvio padrão: 180.29 ms
+Latência mínima: 7.29 ms
+Latência máxima: 1069.31 ms
 Tamanho total de resposta: 1000100 bytes
 
 --- Servidor: APACHE ---
@@ -155,17 +155,149 @@ Total de requisições: 100
 Requisições bem-sucedidas: 100
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 37.09 ms
-Latência mediana: 5.23 ms
-Desvio padrão: 181.82 ms
-Latência mínima: 2.23 ms
-Latência máxima: 1068.14 ms
+Latência média: 38.25 ms
+Latência mediana: 4.22 ms
+Desvio padrão: 177.94 ms
+Latência mínima: 1.70 ms
+Latência máxima: 1046.21 ms
 Tamanho total de resposta: 1000100 bytes
 
 ================================================================================
 ================================================================================
-TESTE: Teste 6: API Status - 200 requisições concorrentes (20 threads)
-Data/Hora: 2025-11-12 14:05:31
+TESTE: Teste 6: Arquivo Grande - 50 requisições concorrentes (10 threads)
+Data/Hora: 2025-11-12 22:19:21
+Aluno: Hermeson A.
+Matrícula: 20239035382
+X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
+================================================================================
+
+--- Servidor: NGINX ---
+Total de requisições: 50
+Requisições bem-sucedidas: 50
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 106.68 ms
+Latência mediana: 48.24 ms
+Desvio padrão: 241.58 ms
+Latência mínima: 14.65 ms
+Latência máxima: 1078.33 ms
+Tamanho total de resposta: 50000050 bytes
+
+--- Servidor: APACHE ---
+Total de requisições: 50
+Requisições bem-sucedidas: 50
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 106.62 ms
+Latência mediana: 46.81 ms
+Desvio padrão: 245.61 ms
+Latência mínima: 14.71 ms
+Latência máxima: 1071.00 ms
+Tamanho total de resposta: 50000050 bytes
+
+================================================================================
+================================================================================
+TESTE: Teste 7: Arquivo Extra Grande (10MB) - 20 requisições sequenciais
+Data/Hora: 2025-11-12 22:19:22
+Aluno: Hermeson A.
+Matrícula: 20239035382
+X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
+================================================================================
+
+--- Servidor: NGINX ---
+Total de requisições: 20
+Requisições bem-sucedidas: 20
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 30.60 ms
+Latência mediana: 28.12 ms
+Desvio padrão: 13.09 ms
+Latência mínima: 13.37 ms
+Latência máxima: 56.33 ms
+Tamanho total de resposta: 209715200 bytes
+
+--- Servidor: APACHE ---
+Total de requisições: 20
+Requisições bem-sucedidas: 20
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 21.19 ms
+Latência mediana: 13.36 ms
+Desvio padrão: 12.99 ms
+Latência mínima: 10.38 ms
+Latência máxima: 48.57 ms
+Tamanho total de resposta: 209715200 bytes
+
+================================================================================
+================================================================================
+TESTE: Teste 8: Arquivo Extra Grande (10MB) - 30 requisições concorrentes (5 threads)
+Data/Hora: 2025-11-12 22:19:24
+Aluno: Hermeson A.
+Matrícula: 20239035382
+X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
+================================================================================
+
+--- Servidor: NGINX ---
+Total de requisições: 30
+Requisições bem-sucedidas: 30
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 165.32 ms
+Latência mediana: 190.08 ms
+Desvio padrão: 67.59 ms
+Latência mínima: 19.14 ms
+Latência máxima: 247.90 ms
+Tamanho total de resposta: 314572800 bytes
+
+--- Servidor: APACHE ---
+Total de requisições: 30
+Requisições bem-sucedidas: 30
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 116.93 ms
+Latência mediana: 86.06 ms
+Desvio padrão: 65.85 ms
+Latência mínima: 15.49 ms
+Latência máxima: 234.29 ms
+Tamanho total de resposta: 314572800 bytes
+
+================================================================================
+================================================================================
+TESTE: Teste 9: Arquivo XXL (50MB) - 10 requisições sequenciais
+Data/Hora: 2025-11-12 22:19:26
+Aluno: Hermeson A.
+Matrícula: 20239035382
+X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
+================================================================================
+
+--- Servidor: NGINX ---
+Total de requisições: 10
+Requisições bem-sucedidas: 10
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 132.92 ms
+Latência mediana: 129.55 ms
+Desvio padrão: 69.88 ms
+Latência mínima: 49.35 ms
+Latência máxima: 225.41 ms
+Tamanho total de resposta: 524288000 bytes
+
+--- Servidor: APACHE ---
+Total de requisições: 10
+Requisições bem-sucedidas: 10
+Requisições falhadas: 0
+Taxa de sucesso: 100.00%
+Latência média: 127.13 ms
+Latência mediana: 108.11 ms
+Desvio padrão: 51.81 ms
+Latência mínima: 66.74 ms
+Latência máxima: 223.30 ms
+Tamanho total de resposta: 524288000 bytes
+
+================================================================================
+================================================================================
+TESTE: Teste 10: API Status - 200 requisições concorrentes (20 threads)
+Data/Hora: 2025-11-12 22:19:30
 Aluno: Hermeson A.
 Matrícula: 20239035382
 X-Custom-ID: f44d26f3aebff6f058eabbaf85366dfb
@@ -176,11 +308,11 @@ Total de requisições: 200
 Requisições bem-sucedidas: 200
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 76.77 ms
-Latência mediana: 3.87 ms
-Desvio padrão: 275.92 ms
-Latência mínima: 1.62 ms
-Latência máxima: 1268.89 ms
+Latência média: 91.57 ms
+Latência mediana: 10.00 ms
+Desvio padrão: 320.15 ms
+Latência mínima: 5.39 ms
+Latência máxima: 2062.29 ms
 Tamanho total de resposta: 27200 bytes
 
 --- Servidor: APACHE ---
@@ -188,11 +320,11 @@ Total de requisições: 200
 Requisições bem-sucedidas: 200
 Requisições falhadas: 0
 Taxa de sucesso: 100.00%
-Latência média: 70.98 ms
-Latência mediana: 4.17 ms
-Desvio padrão: 259.21 ms
-Latência mínima: 2.18 ms
-Latência máxima: 1248.36 ms
+Latência média: 78.29 ms
+Latência mediana: 9.04 ms
+Desvio padrão: 267.29 ms
+Latência mínima: 3.99 ms
+Latência máxima: 1272.05 ms
 Tamanho total de resposta: 27400 bytes
 
 ================================================================================
