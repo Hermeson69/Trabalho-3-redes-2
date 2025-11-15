@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-"""
-Configurações do projeto - Terceira Avaliação Redes 2
-Aluno: Hermeson A.
-Matrícula: 20239035382
-"""
+
 import hashlib
 
 # Dados do aluno

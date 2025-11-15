@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-"""
-Gerador de Gráficos Comparativos
-Aluno: Hermeson A. | Matrícula: 20239035382
-"""
+
 
 import re
 import json

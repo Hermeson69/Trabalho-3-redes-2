@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-"""
-Servidor HTTP Python (Nginx)
-Aluno: Hermeson A. | Matrícula: 20239035382
-"""
+
 import http.server
 import socketserver
 import os

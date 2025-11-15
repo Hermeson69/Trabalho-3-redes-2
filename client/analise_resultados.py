@@ -1,7 +1,3 @@
-"""
-Análise de Resultados dos Testes de Carga
-Aluno: Hermeson A. | Matrícula: 20239035382
-"""
 
 import re
 from pathlib import Path

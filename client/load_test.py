@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-"""
-Testes de Carga HTTP
-Aluno: Hermeson A. | Matrícula: 20239035382
-"""
+
 import http.client
 import hashlib
 import time
