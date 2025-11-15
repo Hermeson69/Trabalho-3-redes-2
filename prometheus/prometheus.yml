@@ -3,10 +3,27 @@ global:
   evaluation_interval: 5s
 
 scrape_configs:
-  # Prometheus self-monitoring
   - job_name: "prometheus"
     static_configs:
       - targets: ["localhost:9090"]
         labels:
           aluno: "Hermeson A."
           matricula: "20239035382"
+
+  - job_name: "nginx_server"
+    static_configs:
+      - targets: ["53.82.0.10:80"]
+        labels:
+          server: "nginx"
+          aluno: "Hermeson A."
+          matricula: "20239035382"
+    metrics_path: "/metrics"
+
+  - job_name: "apache_server"
+    static_configs:
+      - targets: ["53.82.0.20:80"]
+        labels:
+          server: "apache"
+          aluno: "Hermeson A."
+          matricula: "20239035382"
+    metrics_path: "/metrics"

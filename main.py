@@ -258,8 +258,6 @@ class ProjetoRedesManager:
         print(f"{Colors.OKGREEN}✓ Grafana:{Colors.ENDC}         http://localhost:3000 (admin/admin)")
         print("=" * 80)
         print()
-        print(f"{Colors.OKCYAN}Pressione Ctrl+C para parar os containers e limpar tudo{Colors.ENDC}")
-        print()
     
     def cleanup(self):
         """Derruba todos os containers e remove redes"""
@@ -339,7 +337,9 @@ class ProjetoRedesManager:
             self.show_access_info()
             
             # Manter rodando até Ctrl+C
-            print(f"{Colors.BOLD}Containers rodando. Pressione Ctrl+C para parar...{Colors.ENDC}")
+            print(f"{Colors.OKCYAN}Pressione Ctrl+C para parar os containers e limpar tudo{Colors.ENDC}")
+            print()
+            print(f"{Colors.BOLD}Containers rodando. Aguarde...{Colors.ENDC}")
             print()
             
             # Aguardar indefinidamente

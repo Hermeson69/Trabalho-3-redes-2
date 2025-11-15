@@ -1,0 +1,125 @@
+================================================================================
+QUERIES PROMETHEUS/GRAFANA - COPIAR DAQUI
+================================================================================
+
+IMPORTANTE: Copie diretamente deste arquivo TXT!
+As aspas aqui sao aspas retas normais (Shift + ').
+
+================================================================================
+QUERIES BASICAS
+================================================================================
+
+# Total de requisicoes
+http_requests_total
+
+# Requisicoes do Nginx
+http_requests_total{server="nginx"}
+
+# Requisicoes do Apache
+http_requests_total{server="apache"}
+
+# Uptime dos servidores
+process_uptime_seconds
+
+# Bytes transferidos
+http_response_size_bytes
+
+# Conexoes ativas
+http_connections_active
+
+================================================================================
+QUERIES COM RATE (Taxa por segundo)
+================================================================================
+
+# Taxa de requisicoes por segundo (geral)
+rate(http_requests_total[1m])
+
+# Taxa de requisicoes Nginx
+rate(http_requests_total{server="nginx"}[1m])
+
+# Taxa de requisicoes Apache
+rate(http_requests_total{server="apache"}[1m])
+
+# Taxa de bytes por segundo
+rate(http_response_size_bytes[5m])
+
+================================================================================
+PAINEIS GRAFANA - COPIAR AS QUERIES ABAIXO
+================================================================================
+
+Painel 1 - Taxa de Requisicoes (Time Series):
+rate(http_requests_total[1m])
+
+Painel 2 - Total de Requisicoes (Stat):
+Query A: http_requests_total{server="nginx"}
+Query B: http_requests_total{server="apache"}
+
+Painel 3 - Uptime (Gauge):
+process_uptime_seconds
+
+Painel 4 - Throughput (Time Series):
+rate(http_response_size_bytes[5m])
+
+Painel 5 - Conexoes Ativas (Stat):
+http_connections_active
+
+================================================================================
+DICAS
+================================================================================
+
+1. Copie a query DIRETAMENTE deste arquivo TXT (Ctrl+C)
+2. Cole no campo de query do Prometheus/Grafana (Ctrl+V)
+3. NAO copie do README.md (as aspas podem vir erradas)
+4. NAO copie de PDF ou Word
+5. Execute os testes antes (python3 main.py) para ter dados
+
+================================================================================
+TROUBLESHOOTING - ERRO DE ASPAS
+================================================================================
+
+Se aparecer erro: "parse error: unexpected identifier"
+
+PROBLEMA: Voce esta usando aspas curvas " " em vez de aspas retas "
+
+SOLUCAO:
+1. Delete a query inteira
+2. Digite manualmente: http_requests_total{server="nginx"}
+   - Use a tecla de aspas retas (Shift + ' ou Shift + 2)
+3. OU copie diretamente deste arquivo TXT
+
+Para testar se as aspas estao corretas:
+- Aspas CORRETAS:   http_requests_total{server="nginx"}
+- Aspas ERRADAS:    http_requests_total{server="nginx"}
+                                              ^^aspas curvas
+
+================================================================================
+COMO USAR NO GRAFANA
+================================================================================
+
+1. Acesse http://localhost:3000
+2. Login: admin / admin
+3. Dashboards -> New -> New Dashboard
+4. Add visualization -> Prometheus
+5. No campo "Metric" ou "Query", cole:
+   http_requests_total
+6. Clique "Run queries"
+7. Configure Legend: {{server}}
+8. Apply
+
+================================================================================
+QUERIES EXTRAS
+================================================================================
+
+# Comparar latencia (se tiver a metrica)
+http_request_duration_seconds
+
+# Ver todas as metricas disponiveis
+{__name__=~".+"}
+
+# Total de requisicoes nas ultimas 5 minutos
+increase(http_requests_total[5m])
+
+# Media de bytes por requisicao
+http_response_size_bytes / http_requests_total
+
+================================================================================
