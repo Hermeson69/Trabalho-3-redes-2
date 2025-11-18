@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 import json
 from datetime import datetime
 import time
+import resource
 
 PORT = 80
 
@@ -57,6 +58,14 @@ http_connections_active{{server="nginx"}} 1
 # HELP process_uptime_seconds Server uptime in seconds
 # TYPE process_uptime_seconds counter
 process_uptime_seconds{{server="nginx"}} {uptime:.2f}
+
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total{{server="nginx"}} {resource.getrusage(resource.RUSAGE_SELF).ru_utime + resource.getrusage(resource.RUSAGE_SELF).ru_stime:.2f}
+
+# HELP process_resident_memory_bytes Resident memory size in bytes
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes{{server="nginx"}} {resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * 1024}
 """
             response_data = prometheus_metrics.encode()
             metrics.add_bytes(len(response_data))
