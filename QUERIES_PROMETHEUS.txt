@@ -6,33 +6,51 @@ IMPORTANTE: Copie diretamente deste arquivo TXT!
 As aspas aqui sao aspas retas normais (Shift + ').
 
 ================================================================================
-QUERIES BASICAS
+QUERIES BASICAS - EM COMUM (Nginx + Apache)
 ================================================================================
 
-# Total de requisicoes
-http_requests_total
-
-# Requisicoes do Nginx
-http_requests_total{server="nginx"}
-
-# Requisicoes do Apache
-http_requests_total{server="apache"}
+# Total de requisicoes (ambos servidores)
+http_requests_total{server=~"nginx|apache"}
 
 # Uptime dos servidores
-process_uptime_seconds
+process_uptime_seconds{server=~"nginx|apache"}
 
-# Bytes transferidos
-http_response_size_bytes
+# Bytes transferidos (ambos)
+http_response_size_bytes{server=~"nginx|apache"}
 
-# Conexoes ativas
-http_connections_active
+# Conexoes ativas (ambos)
+http_connections_active{server=~"nginx|apache"}
+
+# Requisicoes 2xx (sucesso) - ambos
+http_requests_2xx{server=~"nginx|apache"}
+
+# Requisicoes 4xx (nao encontrado) - ambos
+http_requests_4xx{server=~"nginx|apache"}
+
+# Requisicoes 5xx (erro) - ambos
+http_requests_5xx{server=~"nginx|apache"}
+
+# CPU total - ambos
+process_cpu_seconds_total{server=~"nginx|apache"}
+
+# Memoria residente - ambos
+process_resident_memory_bytes{server=~"nginx|apache"}
+
+# Duracao media de requisicoes - ambos
+http_request_duration_seconds{server=~"nginx|apache"}
+
+# Taxa de requisicoes por segundo - ambos
+http_requests_per_second{server=~"nginx|apache"}
+
+# Bytes por segundo - ambos
+http_bytes_per_second{server=~"nginx|apache"}
 
 ================================================================================
 QUERIES COM RATE (Taxa por segundo)
 ================================================================================
 
-# Taxa de requisicoes por segundo (geral)
-rate(http_requests_total[1m])
+# Taxa de requisicoes por segundo (geral - ambos)
+rate(http_requests_total{server=~"nginx|apache"}[1m])
 
 # Taxa de requisicoes Nginx
 rate(http_requests_total{server="nginx"}[1m])
@@ -40,8 +58,17 @@ rate(http_requests_total{server="nginx"}[1m])
 # Taxa de requisicoes Apache
 rate(http_requests_total{server="apache"}[1m])
 
-# Taxa de bytes por segundo
-rate(http_response_size_bytes[5m])
+# Taxa de bytes por segundo (ambos)
+rate(http_response_size_bytes{server=~"nginx|apache"}[5m])
+
+# Taxa de requisicoes 2xx (ambos)
+rate(http_requests_2xx{server=~"nginx|apache"}[1m])
+
+# Taxa de requisicoes 4xx (ambos)
+rate(http_requests_4xx{server=~"nginx|apache"}[1m])
+
+# Taxa de requisicoes 5xx (ambos)
+rate(http_requests_5xx{server=~"nginx|apache"}[1m])
 
 ================================================================================
 PAINEIS GRAFANA - COPIAR AS QUERIES ABAIXO
