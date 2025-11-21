@@ -3,6 +3,8 @@
 **Aluno:** Hermeson A. | **Matrícula:** 20239035382  
 **X-Custom-ID:** f44d26f3aebff6f058eabbaf85366dfb
 
+# Video: https://youtu.be/bu_-p5r66WM
+
 ## Descrição
 
 Análise comparativa de desempenho entre servidores web Nginx e Apache usando Python HTTP servers, Docker, Prometheus e Grafana. Implementação 100% Python (sem shell scripts).
